@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="mars scaping">
+  <meta name="author" content="James Martin">
+  <title>Mission To Mars</title>
+  <link rel="stylesheet" href="bootstrap.css">
+  <style>
+  
+  </style>
+
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="jumbotron text-center">
+      <h1>Mission to Mars</h1>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Click to Scrape Data</a></p>
+    </div>
+
+    <!-- Mars News -->
+    <div class="row" id="latest-mars-news">
+      <div class="col-md-12">
+        <h2 class="heading">Latest Mars News</h2>
+          <h4 class="heading">{{mars_web.news_title}}</h4>
+        <small></small>
+        <p>{{mars_web.news_p}}</p>
+      </div>
+    </div>
+
+    <div class="row" id="image_weather_info">
+        <!-- Feature Image -->
+        <div class="col-md-8" style="margin-right: 0; margin-left: 0">
+          <h2 class="heading">Featured Mars Image</h2>
+          <img src={{mars_web.featured_image_url}} alt="featured-image" width = 100%>
+        </div>
+
+        <div class="col-md-4" style="margin-left: 0; margin-right: 0">
+            <!-- Weather Info -->
+            <div class="row">
+              <h2 class="heading">Current Weather on Mars</h2>
+              <p>{{mars_web.latest_tweet}}</p>
+            </div>
+    
+        <!-- Mars Fact -->
+        <div class="row" id="box" style="padding: 16px">
+            <h2 class="heading">Mars Facts</h2>
+            <a class="box" href="mars_fact.html"></a>
+            <p style="width: 100%;">{{mars_web.mars_fact_table}}</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Mars Hemisphere Images -->
+    <div class="row" id="box" style="padding: 32px" >
+        <h2 class="heading">Mars Hemispheres</h2>
+        <hr>
+        <!-- Individual Image -->
+        {% for url in mars_web.hemisphere_urls %}
+        <div class="card col-md-5" 
+              style=" border: black 2px solid; padding: 3px;  background-color:gray">
+          <img  class="card-img-top" src={{url.img_url}} alt={{url.title}} width="100%">
+          <div class="card-body text-center" >
+              <div class="card-title" style="padding: 16px">{{url.title}}</div>
+              <a href="{{url.img_url}}"class="btn btn-primary">Full Image</a>
+          </div>
+        </div>
+        {% endfor %}
+    </div>
+
+
+  </div>
+</body>
+
+
+  <!-- START Footer Section -->
+  <footer>
+      <div class="modal-footer">James Martin | Data Analytics & Visualization 2020</div>
+    </footer>
+  <!-- END Footer Section -->
+
+</html>
