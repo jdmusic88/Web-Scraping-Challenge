@@ -256,4 +256,4 @@ def scrape_mars_info():
     mars_info['hemi_urls'] = hemi_urls
 
     # Return mars_data dictionary 
-    return mars_info
+    return mars_info 
